@@ -1,0 +1,19 @@
+word(up)
+word (up)
+word (up)hhh
+aa bb (up, 2)
+aa bb cc (low, 3)
+1E (hex)
+10 (bin)
+42 (hex) 10 (bin)
+(cap) start
+it (cap) was the best of times
+IT WAS THE (low, 3) winter
+aa(up)  bb
+aa (up)  bb
+word(up)
+next
+word(up)   next
+aa bb (cap, 2)
+cc dd
+F0F (hex) and 1010 (bin)
