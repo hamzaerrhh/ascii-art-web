@@ -1,88 +1,49 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"os"
 	"strings"
+
+	"ascii_art/helper"
 )
 
 func main() {
 	if len(os.Args) != 2 {
+		fmt.Println("----Usage : go run main.go arg----")
 		return
 	}
 
-text := os.Args[1]
+	text := os.Args[1]
+	if !helper.Is_all(text) {
+		fmt.Println("You Used caraters from out the ascii table !!")
+		return
+	}
+	if helper.CheckNewLine(text) {
+		fmt.Print(text)
+		return
+	}
 
-// Convert literal "\n" into a real newline
-text = strings.ReplaceAll(text, "\\n", "\n")
-
-	// Load banner font
-	banner, err := loadBanner("standard.txt")
+	banner, err := helper.LoadBanner("standard.txt")
 	if err != nil {
 		fmt.Println("Error loading banner:", err)
 		return
 	}
 
-	// Split by real newline characters
-	lines := strings.Split(text, "\n")
+	lines := strings.Split(text, "\\n")
+	for _, line := range lines {
 
-for idx, line := range lines {
-   // Empty line handling: print only ONE blank line even if there are several ""
-if line == "" {
-    // Only print blank line if previous line was NOT blank
-    if idx == 0 || lines[idx-1] != "" {
-        fmt.Println()
-    }
-    continue
-}
+		if line == "" {
+			fmt.Println("")
+			continue
+		}
 
-
-    // Normal rendering of ASCII art
-    for row := 0; row < 8; row++ {
-        for _, char := range line {
-            if char < 32 || char > 126 {
-                continue
-            }
-            fmt.Print(banner[char][row])
-        }
-        fmt.Println()
-    }
-
-    // Print empty line only if next line is non-empty
-    if idx < len(lines)-1 && lines[idx+1] != "" {
-        fmt.Println()
-    }
-}
-
-}
-
-func loadBanner(path string) (map[rune][]string, error) {
-	file, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-	banner := make(map[rune][]string)
-
-	char := rune(32)
-	for {
-		var block []string
-		for i := 0; i < 8; i++ {
-			if !scanner.Scan() {
-				return banner, nil
+		for row := 0; row < 8; row++ {
+			for _, char := range line {
+				fmt.Print(banner[char][row])
 			}
-			block = append(block, scanner.Text())
+			fmt.Println()
 		}
-		banner[char] = block
-		char++
 
-		if !scanner.Scan() { // skip empty line
-			break
-		}
 	}
-
-	return banner, nil
 }
