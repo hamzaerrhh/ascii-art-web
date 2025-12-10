@@ -1,0 +1,113 @@
+/* CRT Green Terminal Theme */
+
+/* Colors */
+:root {
+  --bg: #000000;
+  --text: #00ff00;
+  --accent: #0f0f0f;
+  --highlight: #008800;
+  --error: #ff0000;
+}
+
+/* Body */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Courier New", monospace;
+  padding: 40px;
+  overflow: hidden;
+}
+
+/* CRT Screen Container */
+.crt {
+  position: relative;
+  border: 4px solid var(--highlight);
+  padding: 40px;
+  max-width: 900px;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0px 0px 25px #00ff0055;
+  border-radius: 5px;
+}
+
+/* Terminal Content */
+.crt-content {
+  position: relative;
+  z-index: 2;
+  font-size: 20px;
+  line-height: 1.5;
+  text-shadow: 0 0 8px #00ff00aa;
+}
+
+/* CRT Scanlines Effect */
+.scanlines {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 255, 0, 0.03),
+    rgba(0, 255, 0, 0.03) 2px,
+    transparent 3px
+  );
+  z-index: 1;
+}
+
+/* Flicker animation */
+@keyframes crt-flicker {
+  0% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.92;
+  }
+}
+
+.crt-content {
+  animation: crt-flicker 0.15s infinite;
+}
+
+/* Blink cursor style */
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Success & Error Colors */
+.success {
+  color: var(--highlight);
+  text-shadow: 0 0 6px #00aa00;
+}
+
+.error {
+  color: var(--error);
+  text-shadow: 0 0 8px #ff0000;
+}
+
+/* Menu */
+.menu p {
+  margin: 4px 0;
+  transition: 0.2s;
+}
+
+.menu p:hover {
+  color: var(--highlight);
+  text-shadow: 0 0 10px #00ff0088;
+  cursor: pointer;
+}
