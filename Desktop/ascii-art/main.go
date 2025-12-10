@@ -6,7 +6,6 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"strings"
 )
 
 type PageData struct {
@@ -53,7 +52,8 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
             return
         }
 
-        text := strings.TrimSpace(r.FormValue("text"))
+        
+        text := r.FormValue("text")
         banner := r.FormValue("banner")
 		fmt.Println("the text is", text)
 		fmt.Println("the banner is ", banner)
