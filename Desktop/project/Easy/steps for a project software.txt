@@ -1,0 +1,22 @@
+-----------STEP 1:positionement,stability---------------
+1:make sure the web app work well
+2:develop the mobile app
+3:analyse and make a routine in Easy
+4:fix error
+-----------STEP 2:scale services in oujda---------------
+0:payement gateway
+1:add services to app
+2:add  a easy market and a bureau
+3:add stockes for restaurant
+4:add systèmes to the app
+-----------STEP 3:earn from oujda,Smedia section---------------
+0:moony from the adversiting(rider + in app+Social media)
+1:focus on social media 
+-----------STEP 3:scale in morroco---------------
+0:get the big city and position well 
+1:be better than glovo
+2:make bureau in each big city
+-----------STEP 3:try ecom services---------------
+0:understand market 
+1:build a plateform wher all e-com can put ther pages and a client where all in Morroco can search and they garentille the service
+2: in client app they can check ther orders
